@@ -63,7 +63,7 @@ their default values.
 | `imagePullPolicy`                     | Image pull policy                                                                                                                       | `IfNotPresent`                                  |
 | `podDisruptionBudget`                 | Pod disruption budget                                                                                                                   | `{}`                                            |
 | `authEnabled`                         | Is login/password required?                                                                                                             | `true`                                          |
-| `core.numberOfServers`                | Number of machines in CORE mode                                                                                                         | `3`                                             |
+| `core.numberOfServers`                | Number of machines in CORE mode                                                                                                         | `1`                                             |
 | `core.sideCarContainers`              | Sidecar containers to add to the core pod. Example use case is a sidecar which identifies and labels the leader when using the http API | `{}`                                            |
 | `core.initContainers`                 | Init containers to add to the core pod. Example use case is a script that installs the APOC library                                     | `{}`                                            |
 | `core.persistentVolume.enabled`       | Whether or not persistence is enabled                                                                                                   | `true`                                          |
@@ -84,10 +84,10 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 install`. For example,
 
 ```bash
-$ helm install --name neo4j-helm --set core.numberOfServers=5,readReplica.numberOfServers=3 stable/neo4j
+$ helm install --name neo4j-helm --set core.numberOfServers=1,readReplica.numberOfServers=0 stable/neo4j
 ```
 
-The above command creates a cluster containing 5 core servers and 3 read
+The above command creates a cluster containing 1 core servers and 0 read
 replicas.
 
 Alternatively, a YAML file that specifies the values for the parameters can be
